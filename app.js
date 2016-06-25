@@ -54,14 +54,12 @@ function calcPercentCovered(claim) {
 function calcAmountCovered(claim) {
 	var claimCost = claim.visitCost;
 	var amountCovered = calcPercentCovered(claim) * claimCost / 100;
-	// console.log('Paid out $' + amountCovered + ' for ' + claim.patientName);
 	return amountCovered;
 }
-// for (var i = 0; i < claimsList.length; i++) {
-// 	calcAmountCovered(claimsList[i]);
-// }
 
-
+for (var i = 0; i < claimsList.length; i++) {
+	totalPayedOut += calcAmountCovered(claimsList[i]);
+}
 
 $(document).ready(function () {
 	for (var i = 1; i <= claimsList.length; i++) {
@@ -73,6 +71,7 @@ $(document).ready(function () {
 
 		);
 	}
+	$('.footer').append('<h4>Total amount of claims paid: $' + totalPayedOut + '.');
 
 	$('li').on('click', function() {
 		$(this).children('p').slideToggle('fast');
