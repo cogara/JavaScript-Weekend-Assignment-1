@@ -63,11 +63,13 @@ for (var i = 0; i < claimsList.length; i++) {
 
 $(document).ready(function () {
 	for (var i = 1; i <= claimsList.length; i++) {
-		$('li[id='+i+']').append('<h3>Patient Name: '+claimsList[i-1].patientName+'</h3> \n' +
+		$('.claimsList').append('<li class="claim" id="'+i+'">\n' +
+														'<h3>Patient Name: '+claimsList[i-1].patientName+'</h3> \n' +
 														'<p>Visit Cost: $'+claimsList[i-1].visitCost+'</p> \n' +
 													 	'<p>Claim Type: '+claimsList[i-1].visitType+'</p> \n' +
 													 	'<p>Percent Covered: ' + calcPercentCovered(claimsList[i-1]) + '% </p>' +
-													 	'<p>Paid Out: $' + calcAmountCovered(claimsList[i-1]) + '</p> \n'
+													 	'<p>Paid Out: $' + calcAmountCovered(claimsList[i-1]) + '</p> \n' +
+														'</li>'
 
 		);
 	}
