@@ -9,6 +9,7 @@ function Claim(name, type, cost){
 	claimsList.push(this); //added to immediately push new claims into array
 }
 
+//create claims
 var claim1 = new Claim("John Doe", "Specialist", 1100);
 
 var claim2 = new Claim("Jane Doe", 'Optical', 100);
@@ -57,6 +58,7 @@ function calcAmountCovered(claim) {
 	return amountCovered;
 }
 
+//add up total amount paid out
 for (var i = 0; i < claimsList.length; i++) {
 	totalPayedOut += calcAmountCovered(claimsList[i]);
 }
@@ -65,22 +67,23 @@ $(document).ready(function () {
 
 	//loops through all claims, and creates li per each with preformatted output
 	for (var i = 1; i <= claimsList.length; i++) {
-		$('.claimsList').append('<li class="claim" id="'+i+'">\n' +
-														'<h3>Patient Name: '+claimsList[i-1].patientName+'</h3> \n' +
-														'<p>Visit Cost: $'+claimsList[i-1].visitCost+'</p> \n' +
-													 	'<p>Claim Type: '+claimsList[i-1].visitType+'</p> \n' +
-													 	'<p>Percent Covered: ' + calcPercentCovered(claimsList[i-1]) + '% </p>' +
-													 	'<p>Paid Out: $' + calcAmountCovered(claimsList[i-1]) + '</p> \n' +
-														'</li>'
-
+		$('.claimsList').append(
+			'<li class="claim" id="'+i+'">\n' +
+			'<h3>Patient Name: '+claimsList[i-1].patientName+'</h3> \n' +
+			'<p>Visit Cost: $'+claimsList[i-1].visitCost+'</p> \n' +
+			'<p>Claim Type: '+claimsList[i-1].visitType+'</p> \n' +
+			'<p>Percent Covered: ' + calcPercentCovered(claimsList[i-1]) + '% </p>' +
+			'<p>Paid Out: $' + calcAmountCovered(claimsList[i-1]) + '</p> \n' +
+			'</li>'
 		);
 	}
+
+	//output total amount paid out to the footer element
 	$('.footer').append('<h4>Total amount of claims paid: $' + totalPayedOut + '.');
 
+	//collapses or expands individual records
 	$('li').on('click', function() {
 		$(this).children('p').slideToggle('fast');
 	});
-
-
 
 });
