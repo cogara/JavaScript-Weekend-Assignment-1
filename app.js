@@ -62,6 +62,8 @@ for (var i = 0; i < claimsList.length; i++) {
 }
 
 $(document).ready(function () {
+
+	//loops through all claims, and creates li per each with preformatted output
 	for (var i = 1; i <= claimsList.length; i++) {
 		$('.claimsList').append('<li class="claim" id="'+i+'">\n' +
 														'<h3>Patient Name: '+claimsList[i-1].patientName+'</h3> \n' +
