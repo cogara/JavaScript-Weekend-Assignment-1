@@ -61,6 +61,7 @@ function calcAmountCovered(claim) {
 //add up total amount paid out
 for (var i = 0; i < claimsList.length; i++) {
 	totalPayedOut += calcAmountCovered(claimsList[i]);
+	console.log('Paid out $' + calcAmountCovered(claimsList[i]) + ' for ' + claimsList[i].patientName);
 }
 
 $(document).ready(function () {
